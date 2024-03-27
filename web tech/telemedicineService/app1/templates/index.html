@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="fcontainer">
+    <div class="title-body">
+      <h3>Medical Information for Telemedicine Service</h3>
+    </div>
+    <!-- BMI Start -->
+    <form class="form" id="form" onsubmit="return validateForm()">
+      <div class="bmi-title">
+        <label for="">BMI Calculator</label>
+      </div>
+      <div class="row-one">
+        <input type="text" class="text-input" id="age" autocomplete="off" required />
+        <p class="text">Age</p>
+        <label class="container">
+          <input type="radio" name="radio" id="f">
+          <p class="text">Female</p>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="radio" id="m">
+          <p class="text">Male</p>
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+      <div class="row-two">
+        <input type="text" class="text-input" id="height" autocomplete="off" required>
+        <p class="text">Height (cm)</p>
+        <input type="text" class="text-input" id="weight" autocomplete="off" required>
+        <p class="text">Weight (kg)</p>
+      </div>
+      <button type="button" class="btn-bmi" id="submit">Submit</button>
+      <div id="rslt"></div>
+    </form>
+    <!-- BMI End -->
+
+  </div>
+
+  <!-- Footer start -->
+  <div class="mt-5 pt-5 pb-5 footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-xs-12 about-company">
+          <h2>Medical App</h2>
+          <p class="pr-5 text-white">Hello, this a medical website. We provide verious medical services.
+            <br>You can take an appoinment to our doctor, submit your medical issues
+            <br>and get quick responses.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+            <a href="https://www.facebook.com" target="_blank" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.github.com" target="_blank" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-12 links">
+          <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+          <ul class="m-0 p-0">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#">Doctors</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-xs-12 location">
+          <h4 class="mt-lg-0 mt-sm-4">Location</h4>
+          <p>AIUB, Kuratoli, Baridhara, Dhaka, Bangladesh</p>
+          <p class="mb-0"><i class="fa fa-phone mr-3"></i> +8801111111111</p>
+          <p><i class="fa fa-envelope-o mr-3"></i> info@mdcl.com</p>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col copyright">
+          <p class=""><small class="text-white-50">© 2023. All Rights Reserved.</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer end -->
+{% endblock content %}

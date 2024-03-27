@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Register Page {%endblock title %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}" />
+{% endblock css %}
+
+
+{% block content %}
+
+{% for message in messages %}
+<div class="row">
+  <div class="col-6 mx-auto">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="myAlert">
+      <strong>Message: </strong> {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+<div class="f-container" id="container">
+  <!-- Doctor Sign Up form start -->
+  <div class="form-container sign-up">
+    <form action="" method="post">
+      {% csrf_token %}
+      <h1>Create Account (Doctor)</h1>
+      <div class="social-icons">
+        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your email for registeration</span>
+
+      <input type="text" placeholder="Name" name="doctor_name" />
+      <input type="email" placeholder="Email" name="doctor_email" />
+      <input type="text" placeholder="Phone number" name="doctor_phone" />
+      <input type="password" placeholder="Password" name="doctor_password" />
+      <input type="password" placeholder="Confirm Password" name="doctor_password2" />
+
+      <div class="form-group col-md-12">
+        <select id="inputState" class="form-control" name="doctor_speciality">
+          <option selected>Select Speciality</option>
+          <option value="Pulmonologists">Pulmonologists</option>
+          <option value="Cardiologists">Cardiologists</option>
+          <option value="Dermatologists">Dermatologists</option>
+          <option value="Neurologists">Neurologists</option>
+        </select>
+      </div>
+
+      <button type="submit" name="submit_doctor" class="btn-login">Sign Up</button>
+      <div class="login-register">
+        <p>Already have an account? <a href="{% url 'login_page' %}" class="link-ac login-link">
+            Login
+          </a></p>
+      </div>
+    </form>
+    <!-- Doctor Sign Up form End -->
+
+  </div>
+
+  <!-- Patient Sign In form start -->
+  <div class="form-container sign-in">
+    <form action="" method="post">
+      {% csrf_token %}
+      <h1>Create Account (Patient)</h1>
+      <div class="social-icons">
+        <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+        <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your email for registeration</span>
+      <input type="text" placeholder="Name" name="patient_name" />
+      <input type="email" placeholder="Email" name="patient_email" />
+      <input type="text" placeholder="Phone Number" name="patient_phone" />
+      <input type="password" placeholder="Password" name="patient_password" />
+      <input type="password" placeholder="Confirm Password" name="patient_password2" />
+      <input type="text" class="r-date" placeholder="Date of Birth" name="patient_dob" onfocus="(this.type='date')"
+        required />
+
+      <div class="form-group col-md-12">
+        <select id="inputState" class="form-control" name="patient_gender">
+          <option selected class="gender-rg">Choose Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <button type="submit" name="submit_patient" class="btn-login">Sign Up</button>
+
+      <div class="login-register">
+        <p>Already have an account? <a href="{% url 'login_page' %}" class="link-ac login-link">
+            Login
+          </a></p>
+      </div>
+    </form>
+    <!-- Patient Sign In form end -->
+  </div>
+
+  <div class="toggle-container">
+    <div class="toggle">
+      <div class="toggle-panel toggle-left">
+        <h1>Hello, Doctor!</h1>
+        <p>
+          Register with your personal details
+        </p>
+        <button class="hidden btn-login" id="login">Sign Up For Patient</button>
+      </div>
+      <div class="toggle-panel toggle-right">
+        <h1>Hello, Patient!</h1>
+        <p>
+          Register with your personal details to use all of site features
+        </p>
+        <button class="hidden btn-login" id="register">Sign Up For Doctor</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer start -->
+<div class="mt-5 pt-5 pb-5 footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-xs-12 about-company">
+        <h2>Medical App</h2>
+        <p class="pr-5 text-white-50">Hello, this a medical website. We provide verious medical services. You can take
+          an appoinment to our doctor, submit your medical issues and get quick responses.</p>
+        <div class="social-icons">
+          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-12 links">
+        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+        <ul class="m-0 p-0">
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="{% url 'service_page' %}">Services</a></li>
+          <li><a href="#">Doctors</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-xs-12 location">
+        <h4 class="mt-lg-0 mt-sm-4">Location</h4>
+        <p>AIUB,Kuratoli, Baridhara, Dhaka, Bangladesh</p>
+        <p class="mb-0"><i class="fa fa-phone mr-3"></i>011111111111</p>
+        <p><i class="fa fa-envelope-o mr-3"></i>info@mdcl.com</p>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col copyright">
+        <p class=""><small class="text-white-50">© 2023. All Rights Reserved.</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer End -->
+
+{% endblock content %}
+
+{% block js %}
+<script>
+  setTimeout(function () {
+    document.getElementById('myAlert').style.display = 'none';
+  }, 3000);
+</script>
+
+<script src="{% static 'js/script2.js' %}"></script>
+{% endblock js %}

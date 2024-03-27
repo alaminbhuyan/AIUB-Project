@@ -1,0 +1,32 @@
+form {
+    border-radius: 20px !important;
+    padding: 30px;
+}
+
+#iotbutton {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%); */
+}
+
+.mybtn-success{
+    border-radius: 50px;
+}
+
+.form-control, .form-select{
+    color: rgba(0,0,0,.87);
+    border-bottom-color: rgba(0,0,0,.42);
+    /* box-shadow: none !important; */
+    border: none;
+    /* border-bottom: 1px solid; */
+    border: 1px solid;
+    border-radius: 4px 4px 0 0;
+}
+
+.mycard {
+    /* background-color: rgb(240, 235, 235); */
+    /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+    background: linear-gradient(90deg, rgb(221, 221, 230) 0%, rgb(179, 167, 194) 35%, rgb(143, 172, 177) 100%);
+    opacity: 0.8;
+}

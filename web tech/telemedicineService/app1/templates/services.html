@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Service Page {%endblock title %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}" />
+{% endblock css %}
+
+{% block content %}
+
+<div class="container my-5">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8" style="margin-top: 100px;">
+      <p class="d-inline-flex gap-1">
+
+      <h3 class="text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample" style="border: 1px solid;">Click to provide patient
+        information</h3>
+
+      <!-- <button class="btn btn-outline-success justify-content-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Patient Information
+        </button> -->
+
+      </p>
+
+      <!-- Modal Started -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fs-5" id="staticBackdropLabel">Available wearable devices </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                <!-- <i class="fa-solid fa-check myicon"></i> -->
+                <span class="spinner-border spinner-border-sm" aria-hidden="true" id="myspan"></span>
+                Huawei Watch GT 3
+              </p>
+              <p>
+                <span class="spinner-border spinner-border-sm" aria-hidden="true" id="myspan2"></span>
+                Xiaomi Mi Band 6
+              </p>
+              <p>
+                <span class="spinner-border spinner-border-sm" aria-hidden="true" id="myspan3"></span>
+                Apple Watch Series 7
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary btn-sm" id="iotbutton1" data-bs-dismiss="modal">Okay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Ended -->
+
+
+      <div class="collapse" id="collapseExample">
+
+        <div class="card card-body mycard">
+
+          <!-- form started here -->
+          <form class="row g-3" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" name="name" id="name" required>
+            </div>
+
+            <div class="col-md-2">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" name="age" id="age" min="1" step="1" required>
+            </div>
+
+            <div class="col-md-4">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" class="form-select" name="gender">
+                <option value="Male" selected>Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="col-6">
+              <label for="mobile" class="form-label">Mobile Number</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+880" required>
+            </div>
+
+            <hr>
+
+            <h5>Medical Records</h5>
+            <button type="submit" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+              id="iotbutton2">Connect With IoT Device</button>
+
+            <div class="col-md-4">
+              <label for="bloodpressure" class="form-label">Blood Pressure</label>
+              <input type="text" class="form-control" name="bloodpressure" id="bloodpressure" required>
+            </div>
+
+            <div class="col-md-4">
+              <label for="heartrate" class="form-label">Heart Rate</label>
+              <input type="text" class="form-control" name="heartrate" id="heartrate" required>
+            </div>
+
+            <div class="col-md-4">
+              <label for="stresslevel" class="form-label">Stress Levels</label>
+              <input type="text" class="form-control" name="stresslevel" id="stresslevel" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="diabetes" class="form-label">Diabetes After Breakfast/Meals</label>
+              <select id="diabetes" class="form-select" name="diabetes">
+                <option value="0-4" selected>0-4</option>
+                <option value="4-6">4-6</option>
+                <option value="6-10">6-10</option>
+                <option value="10+">10+</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="chestDiseaseDuration" class="form-label">Chest Disease Duration</label>
+              <select id="chestDiseaseDuration" class="form-select" name="chestDiseaseDuration">
+                <option value="Less than 1 miniute" selected>Less than 1 miniute</option>
+                <option value="1 miniute">1 miniute</option>
+                <option value="Less than 2 miniute">Less than 2 miniute</option>
+                <option value="2 miniute">2 miniute</option>
+                <option value="Less than 3 miniute">Less than 3 miniute</option>
+                <option value="3 miniute">3 miniute</option>
+              </select>
+            </div>
+
+
+            <div class="col-md-12">
+              <label for="healthissues" class="form-label">Health Issues</label>
+              <textarea class="form-control" id="healthissues" rows="6" name="healthIssues"></textarea>
+            </div>
+
+            <hr>
+
+            <h5>Recent Faced Problems</h5>
+            <div class="col-6">
+              <label for="medicalcheckup" class="form-label">Issue:1 (Last Medical Checkup Date)</label>
+              <input type="date" class="form-control" id="medicalcheckup" name="lastCheckupDate" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="lasthealthissues" class="form-label">Previous Condition with Doctor advice</label>
+              <textarea class="form-control" id="lasthealthissues" rows="4" name="previousDoctorAdvice"></textarea>
+            </div>
+
+            <div class="col-md-12">
+              <label for="recentcondition" class="form-label">Issue:2 (Recent Condition)</label>
+              <textarea class="form-control" id="recentcondition" rows="6" name="recentCondition"></textarea>
+            </div>
+
+            <div class="col-md-4">
+              <label for="xrayimg" class="form-label">Upload Your X-Ray Image</label>
+              <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" required>
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" name="submit_patient">Submit</button>
+              <!-- <a href="imageprocessing.php" class="btn btn-primary mybtn-primary" type="button" target="_blank">Submit</a> -->
+            </div>
+          </form>
+          <!-- form end here -->
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/myscript.js' %}"></script>
+{% endblock js %}
